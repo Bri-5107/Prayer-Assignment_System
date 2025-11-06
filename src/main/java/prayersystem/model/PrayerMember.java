@@ -12,7 +12,11 @@ public class PrayerMember {
     private String memberName;
     private boolean isPresent;
     
-    public PrayerMember(){
+     public PrayerMember() {
+        this.isPresent = false;
+    }
+    
+    public PrayerMember(String memberName){
         this.memberName = memberName;
         this.isPresent = false;
     }

@@ -4,6 +4,7 @@
  */
 package prayersystem.model;
 import java.util.*;
+import java.util.Random;
 /**
  *
  * @author briandionisio
@@ -35,6 +36,7 @@ public class PrayerAssigner {
         List<Family> sortedFamilies = new ArrayList<Family>(allFamilies);
         Collections.sort(sortedFamilies);
         
+        shuffleWithinPriorityGroups(sortedFamilies);
         
         //Assign 1:1
         int familyIndex = 0;
@@ -61,6 +63,27 @@ public class PrayerAssigner {
         return assignments;
         
     }
+    
+    //Helper: Randomness
+    private static void shuffleWithinPriorityGroups(List<Family> families) {
+        Random random = new Random();
+
+        int i = 0;
+        while (i < families.size()) {
+            int currentPriority = families.get(i).getQueuePriority();
+            int groupStart = i;
+
+            // Find all families with the same priority
+            while (i < families.size() && families.get(i).getQueuePriority() == currentPriority) {
+                i++;
+            }
+
+            // Shuffle this priority group
+            List<Family> group = families.subList(groupStart, i);
+            Collections.shuffle(group, random);
+        }
+    }
+    
     // Helper: Check if member belongs to a family
     private static boolean isMemberPartOfFamily(PrayerMember member, Family family) {
         for (String famMember : family.getFamilyMembers()) {

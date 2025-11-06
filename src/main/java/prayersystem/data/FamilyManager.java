@@ -33,32 +33,12 @@ public class FamilyManager {
         // Initialize Gson with pretty printing
         gson = new GsonBuilder().setPrettyPrinting().create();
         
-        // Try to load existing data, otherwise use defaults
-        if (!loadFromFile()) {
-            loadDefaultData();
-        }
+        loadFromFile();
+        
     }
     
     //Load default data
     
-    private void loadDefaultData() {
-        System.out.println("[INFO] Loading default sample data...");
-        
-        // Sample families
-        families.add(new Family("Cruz Family", Arrays.asList("Maria Cruz", "Jose Cruz")));
-        families.add(new Family("Santos Family", Arrays.asList("Juan Santos", "Ana Santos")));
-        families.add(new Family("Reyes Family", Arrays.asList("Pedro Reyes", "Rosa Reyes")));
-        families.add(new Family("Garcia Family", Arrays.asList("Sofia Garcia", "Miguel Garcia")));
-        
-        // Sample members
-        members.add(new PrayerMember("Maria Cruz"));
-        members.add(new PrayerMember("Juan Santos"));
-        members.add(new PrayerMember("Pedro Reyes"));
-        members.add(new PrayerMember("Sofia Garcia"));
-        
-        System.out.println("[INFO] Loaded " + families.size() + " families and " + 
-                          members.size() + " members");
-    }
     
     //CRUD Operations
     

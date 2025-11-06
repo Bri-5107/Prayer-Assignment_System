@@ -14,10 +14,14 @@ public class Family implements Comparable<Family>{
     private ArrayList<String> familyMembers;
     private int queuePriority;
     
+    public Family() {
+        this.familyMembers = new ArrayList<>();
+        this.queuePriority = 0;
+    }
     //constructor for initialization of family name and members
-    public Family(){
-        familyName = familyName;
-        familyMembers = new ArrayList<String>(familyMembers);
+    public Family(String familyName, List<String> familyMembers){
+        this.familyName = familyName;
+        this.familyMembers = new ArrayList<String>(familyMembers);
         queuePriority = 0;
         
     }
